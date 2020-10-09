@@ -21,3 +21,5 @@ Instead of creating another branch, we create a new repository called portfolio_
 
 Note: for each upgrade we do with this repository, and want to publish at GitHub pages we have to:
 - command >flutter build web
+
+I still don`t know how to upgrade the https://lbarqueira.github.io/ repository...
