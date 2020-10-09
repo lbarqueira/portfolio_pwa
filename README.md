@@ -17,7 +17,6 @@ Your site is published at https://lbarqueira.github.io/
 
 __Second phase:__
 At this phase you have,  Your site published at https://lbarqueira.github.io/ 
-We have to create another branch that we will call source (of master). In this branch we will have the remaining of the project that is, the source of the master. 
-How to do this????
+Instead of creating another branch, we create a new repository called portfolio_pwa (where we are now) for the remaining project. __Note that .gitignore file excludes the build directory__.
 
 
