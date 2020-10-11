@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
-              color: Colors.black87.withOpacity(0.79),
+              color: Colors.black87.withOpacity(0.75),
               colorBlendMode: BlendMode.darken,
             ),
             Padding(
@@ -56,8 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'Nice meeting you!',
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.04,
-                        color: Colors.white70),
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      color: Colors.white70,
+                    ),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(height: 30),
@@ -138,7 +139,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: MediaQuery.of(context).size.width * 0.6,
       child: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -161,7 +162,7 @@ class AppDrawer extends StatelessWidget {
   DrawerHeader _buildDrawerHeader(context) {
     return DrawerHeader(
       child: Text(
-        'Blogs & Apps',
+        'Blogs & Apps & Projects',
         style: TextStyle(
             color: Colors.white70,
             fontSize: MediaQuery.of(context).size.width * 0.04),
