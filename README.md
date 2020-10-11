@@ -20,9 +20,12 @@ At this phase you have,  Your site published at https://lbarqueira.github.io/
 Instead of creating another branch, we create a new repository called portfolio_pwa (where we are now) for the remaining project. __Note that .gitignore file excludes the build directory__.
 
 Note: for each upgrade we do with this repository, and want to publish at GitHub pages we have to:
-- command >flutter build web
-
-- cmd >cd build >cd web
+- cmd >flutter build web
+- cmd >cd build 
+- cmd >cd web
 - cmd >git status
 - cmd >git add .
-- cdm >git commit -m "upgrade"
+- cmd >git add .
+- cmd >git status
+- cdm >git commit -m "description"
+- cdm >git push
