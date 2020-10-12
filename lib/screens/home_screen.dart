@@ -145,13 +145,14 @@ class AppDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             _buildDrawerHeader(context),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-                Navigator.pop(context);
-              },
+            _AppDrawerTile(
+              title: 'Blogs',
+            ),
+            _AppDrawerTile(
+              title: 'Apps',
+            ),
+            _AppDrawerTile(
+              title: 'Projects',
             ),
           ],
         ),
@@ -174,6 +175,31 @@ class AppDrawer extends StatelessWidget {
           fit: BoxFit.cover,
           image: AssetImage('assets/images/portfolio_image.jpg'),
         ),
+      ),
+    );
+  }
+}
+
+class _AppDrawerTile extends StatelessWidget {
+  final String title;
+
+  const _AppDrawerTile({Key key, @required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(color: Color(0xCC403A38), // 85% — D9, 80% — CC
+      child: ListTile(
+        title: Text(
+          title,
+          style: TextStyle(
+              color: Colors.white70,
+              fontSize: MediaQuery.of(context).size.width * 0.04),
+        ),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+          Navigator.pop(context);
+        },
       ),
     );
   }
