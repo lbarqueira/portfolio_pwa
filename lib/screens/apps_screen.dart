@@ -25,7 +25,7 @@ class AppsScreen extends StatelessWidget {
             ListView(
               children: [
                 AppsListItem(
-                  image: const AssetImage('assets/images/lugh_happy.PNG'),
+                  image: const AssetImage('assets/images/lugh_happy.png'),
                   onTap: () {
                     urlLauncher.launchInWebView(
                         'https://play.google.com/store/apps/details?id=com.barqueira.cicd.demo');
