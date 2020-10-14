@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white54),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   Text(
                     'Nice meeting you!',
                     style: TextStyle(
@@ -63,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     textAlign: TextAlign.left,
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   socialAccounts(),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.65),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.45),
                   Text('Share it!',
                     style: TextStyle(
                       fontSize: 10.0,
@@ -232,7 +232,7 @@ class AppDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             //           _buildDrawerHeader(context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.5),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.4),
             _AppDrawerTile(
               title: 'Blogs',
               onTap: () {
