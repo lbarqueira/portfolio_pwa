@@ -3,6 +3,8 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:portfolio_pwa/services/url_launcher.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
+import 'apps_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -48,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   TypewriterAnimatedTextKit(
                     text: ['Hello, I`m Luis Barqueira'],
                     textStyle: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        fontSize: 30.0,
                         color: Colors.white54),
                     textAlign: TextAlign.left,
                   ),
@@ -56,13 +58,53 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'Nice meeting you!',
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontSize: 20.0,
                       color: Colors.white70,
                     ),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(height: 30),
                   socialAccounts(),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.65),
+                  Text('Share it!',
+                    style: TextStyle(
+                      fontSize: 10.0,
+                      color: Colors.white70,
+                    ),
+                    textAlign: TextAlign.left,),
+                  SizedBox(
+                    width: 70.0,
+                    height: 2.0,
+                    child: Container(color: Colors.white,),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: InkWell(
+                          onTap: () async {
+                            await urlLauncher.mailUsers(
+                                'mailto:?subject=LuisBarqueira&body=https://lbarqueira.github.io/');
+                          },
+                          child: Icon(
+                            AntDesign.mail,
+                            color: Colors.white70,
+                            size: 25.0,
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          qrDialog(context);
+                        },
+                        child: Icon(
+                          AntDesign.qrcode,
+                          color: Colors.white70,
+                          size: 25.0,
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
@@ -131,6 +173,51 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+Future<bool> qrDialog(context) {
+  return showDialog(
+    context: context,
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        child: Container(
+          height: 370.0,
+          width: 370.0,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
+          child: Column(
+            children: <Widget>[
+              Image(
+                image: const AssetImage('assets/images/qr_code.png'),
+                width: 300.0,
+                height: 300.0,
+                fit: BoxFit.cover,
+                colorBlendMode: BlendMode.darken,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              FlatButton(
+                  child: Center(
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: Colors.transparent)
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
 class AppDrawer extends StatelessWidget {
   const AppDrawer({
     Key key,
@@ -139,20 +226,42 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: 240.0,
       child: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            _buildDrawerHeader(context),
+            //           _buildDrawerHeader(context),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.5),
             _AppDrawerTile(
               title: 'Blogs',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AppsScreen(),
+                  ),
+                );
+              },
             ),
             _AppDrawerTile(
               title: 'Apps',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AppsScreen(),
+                  ),
+                );
+              },
             ),
             _AppDrawerTile(
               title: 'Projects',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AppsScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -182,24 +291,31 @@ class AppDrawer extends StatelessWidget {
 
 class _AppDrawerTile extends StatelessWidget {
   final String title;
+  final Function onTap;
 
-  const _AppDrawerTile({Key key, @required this.title}) : super(key: key);
+  const _AppDrawerTile({Key key, @required this.title, @required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(color: Color(0xCC403A38), // 85% — D9, 80% — CC
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+        side: BorderSide(width: 2, color: Colors.black54.withOpacity(0.75)),
+      ),
+
+      color: Color(0xBF403A38), // 85% — D9, 80% — CC, 75% — BF
       child: ListTile(
         title: Text(
           title,
           style: TextStyle(
-              color: Colors.white70,
-              fontSize: MediaQuery.of(context).size.width * 0.04),
+              color: Colors.white54,
+              fontSize: 20.0),
         ),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-          Navigator.pop(context);
-        },
+        onTap: onTap,
       ),
     );
   }
