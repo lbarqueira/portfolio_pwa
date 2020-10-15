@@ -32,6 +32,14 @@ class AppsScreen extends StatelessWidget {
                   },
                   title: 'My great dog CI CD Flutter Demo',
                 ),
+                AppsListItem(
+                  image: const AssetImage('assets/images/lugh_happy.png'),
+                  onTap: () {
+                    urlLauncher.launchInWebView(
+                        'https://play.google.com/store/apps/details?id=com.barqueira.cicd.demo');
+                  },
+                  title: 'My great dog CI CD Flutter Demo',
+                ),
               ],
             ),
           ],
@@ -62,12 +70,14 @@ class AppsListItem extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Card(
-                margin: EdgeInsetsDirectional.only(top: 20, bottom: 0),
+                margin: EdgeInsetsDirectional.only(top: 25, bottom: 0),
                 child: Column(
                   children: [
                     Image(
-                      width: MediaQuery.of(context).size.width / 2,
-                      height: MediaQuery.of(context).size.height / 4,
+                      //  width: MediaQuery.of(context).size.width / 2,
+                      //  height: MediaQuery.of(context).size.height / 4,
+                      width: 280.0,
+                      height: 280.0,
                       fit: BoxFit.cover,
                       image: image,
                     ),
@@ -77,8 +87,10 @@ class AppsListItem extends StatelessWidget {
             ],
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 14,
-            width: MediaQuery.of(context).size.width / 2,
+            //height: MediaQuery.of(context).size.height / 14,
+            //width: MediaQuery.of(context).size.width / 2,
+            width: 280.0,
+            height: 40.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(color: Color(0xBFDEC6AF)),
             child: Padding(

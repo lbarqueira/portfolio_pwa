@@ -49,9 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   TypewriterAnimatedTextKit(
                     text: ['Hello, I`m Luis Barqueira'],
-                    textStyle: TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white54),
+                    textStyle: TextStyle(fontSize: 30.0, color: Colors.white54),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(height: 20),
@@ -65,17 +63,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: 20),
                   socialAccounts(),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.45),
-                  Text('Share it!',
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.45),
+                  Text(
+                    'Share it!',
                     style: TextStyle(
                       fontSize: 10.0,
                       color: Colors.white70,
                     ),
-                    textAlign: TextAlign.left,),
+                    textAlign: TextAlign.left,
+                  ),
                   SizedBox(
                     width: 70.0,
                     height: 2.0,
-                    child: Container(color: Colors.white,),
+                    child: Container(
+                      color: Colors.white,
+                    ),
                   ),
                   Row(
                     children: [
@@ -84,7 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: InkWell(
                           onTap: () async {
                             await urlLauncher.mailUsers(
-                                'mailto:?subject=LuisBarqueira&body=https://lbarqueira.github.io/');
+                              Uri.encodeFull(
+                                  'mailto:?subject=Portfolio of Luis Barqueira&body=https://lbarqueira.github.io/'),
+                            );
                           },
                           child: Icon(
                             AntDesign.mail,
@@ -122,7 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: InkWell(
             onTap: () async {
               await urlLauncher.mailUsers(
-                  'mailto:luis.barqueira@gmail.com?subject=YourSubject&body=Hello');
+                Uri.encodeFull(
+                    'mailto:luis.barqueira@gmail.com?subject=Your Subject&body=Your Message'),
+              );
             },
             child: Icon(
               AntDesign.mail,
@@ -231,7 +237,6 @@ class AppDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            //           _buildDrawerHeader(context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.4),
             _AppDrawerTile(
               title: 'Blogs',
@@ -268,25 +273,6 @@ class AppDrawer extends StatelessWidget {
       ),
     );
   }
-
-  DrawerHeader _buildDrawerHeader(context) {
-    return DrawerHeader(
-      child: Text(
-        'Blogs & Apps & Projects',
-        style: TextStyle(
-            color: Colors.white70,
-            fontSize: MediaQuery.of(context).size.width * 0.04),
-      ),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          colorFilter: ColorFilter.mode(
-              Colors.black87.withOpacity(0.70), BlendMode.darken),
-          fit: BoxFit.cover,
-          image: AssetImage('assets/images/portfolio_image.jpg'),
-        ),
-      ),
-    );
-  }
 }
 
 class _AppDrawerTile extends StatelessWidget {
@@ -311,9 +297,7 @@ class _AppDrawerTile extends StatelessWidget {
       child: ListTile(
         title: Text(
           title,
-          style: TextStyle(
-              color: Colors.white54,
-              fontSize: 20.0),
+          style: TextStyle(color: Colors.white54, fontSize: 20.0),
         ),
         onTap: onTap,
       ),
