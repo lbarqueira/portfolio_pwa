@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:portfolio_pwa/services/url_launcher.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
-
 import 'apps_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -47,9 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TypewriterAnimatedTextKit(
-                    text: ['Hello, I`m Luis Barqueira'],
-                    textStyle: TextStyle(fontSize: 30.0, color: Colors.white54),
+                  Text(
+                    'Hello, I`m Luis Barqueira',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white54,
+                    ),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(height: 20),
@@ -65,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   socialAccounts(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.45),
                   Text(
-                    'Share it!',
+                    'Share me!',
                     style: TextStyle(
                       fontSize: 10.0,
                       color: Colors.white70,
@@ -91,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                           child: Icon(
-                            AntDesign.mail,
+                            FontAwesomeIcons.envelope,
                             color: Colors.white70,
                             size: 25.0,
                           ),
@@ -102,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           qrDialog(context);
                         },
                         child: Icon(
-                          AntDesign.qrcode,
+                          FontAwesomeIcons.qrcode,
                           color: Colors.white70,
                           size: 25.0,
                         ),
@@ -131,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             child: Icon(
-              AntDesign.mail,
+              FontAwesomeIcons.envelope,
               color: Colors.white70,
               size: 25.0,
             ),
@@ -144,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
               urlLauncher.launchInBrowser('https://twitter.com/barqueira');
             },
             child: Icon(
-              AntDesign.twitter,
+              FontAwesomeIcons.twitter,
               color: Colors.white70,
               size: 25.0,
             ),
@@ -158,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'https://www.linkedin.com/in/luis-barqueira-7369092/');
             },
             child: Icon(
-              AntDesign.linkedin_square,
+              FontAwesomeIcons.linkedin,
               color: Colors.white70,
               size: 25.0,
             ),
@@ -169,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
             urlLauncher.launchInBrowser('https://github.com/lbarqueira');
           },
           child: Icon(
-            AntDesign.github,
+            FontAwesomeIcons.github,
             color: Colors.white70,
             size: 25.0,
           ),
@@ -239,21 +240,25 @@ class AppDrawer extends StatelessWidget {
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.4),
             _AppDrawerTile(
-              title: 'Blogs',
+              title: 'Apps',
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AppsScreen(),
+                    builder: (context) => AppsScreen(
+                      type: 'Apps',
+                    ),
                   ),
                 );
               },
             ),
             _AppDrawerTile(
-              title: 'Apps',
+              title: 'Blogs',
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AppsScreen(),
+                    builder: (context) => AppsScreen(
+                      type: 'Blogs',
+                    ),
                   ),
                 );
               },
@@ -263,7 +268,9 @@ class AppDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AppsScreen(),
+                    builder: (context) => AppsScreen(
+                      type: 'Projects',
+                    ),
                   ),
                 );
               },

@@ -27,5 +27,9 @@ Note: for each upgrade we do with this repository, and want to publish at GitHub
 - cmd >git add .
 - cmd >git add .
 - cmd >git status
+- cmd >git remote -v
 - cdm >git commit -m "description"
 - cdm >git push
+if the above command gives >fatal: The current branch master has no upstream branch.
+Then use:
+- cmd >git push -f origin master
